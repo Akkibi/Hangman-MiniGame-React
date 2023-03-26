@@ -11,6 +11,18 @@
   width: 1.5lh;
   padding: 5px;
 }
+
+.button2 {
+  border: solid 2px blue;
+  color: white;
+  text-align: center;
+  background-color: black;
+  border-radius: 5px;
+  font-size: 1vw;
+  margin: 5px;
+  padding: 5px;
+}
+
 .button:disabled {
   transition: 0.3s;
   opacity: 0.5;

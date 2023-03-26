@@ -6,33 +6,27 @@ import { Pendu } from "./components/Pendu/Pendu";
 import "./App.css";
 import hangmanSvg from "./HANGMAN.svg";
 
-// const response = await fetch("http://localhost:3001", {
-//   method: "GET",
-//   mode: "cors",
-//   headers: {
-//     Authorization: `Bearer: ${token}`,
-//     "Content-Type": "application/json",
-//   },
-//   body: JSON.stringify(data),
-// });
-//
-// console.log(response.json());
+const API_URL = "http://localhost:3001/";
+
+const getWord = (langage) => {
+  return fetch(API_URL, {
+    method: "GET",
+    mode: "cors",
+    params: {
+      locale: langage,
+    },
+  })
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => data.word);
+};
 
 function App() {
-  useEffect(() => {
-    const API_URL = "http://localhost:3001";
-    fetch(API_URL)
-      .then((res) => {
-        res.json();
-      })
-      .then((data) => {
-        setWord(data.word);
-      });
-  });
-
   const [word, setWord] = useState("");
   const [letters, setLetters] = useState([]);
   const [tries, setTries] = useState(0);
+  const [langage, setLangage] = useState("fr");
 
   const [gameover, setGameover] = useState();
 
@@ -41,20 +35,26 @@ function App() {
       setTries(tries + 1);
     }
     if (tries >= 11) {
-      setGameover("reload the page to play again");
+      setGameover(true);
     }
-
     setLetters(() => [...letters, letter]);
   };
-
-  useEffect(() => {
-    setWord(response.word);
-  }, []);
 
   const foundWord = useMemo(
     () => word.split("").every((letter) => letters.includes(letter)),
     [word, letters]
   );
+
+  const reset = () => {
+    getWord(langage).then((word) => setWord(word));
+    setLetters([]);
+    setTries(0);
+    setGameover();
+  };
+
+  useEffect(() => {
+    reset();
+  }, []);
 
   return (
     <div className="App">
@@ -67,7 +67,7 @@ function App() {
           />
           <Container className="col child3">
             <Word word={word} letters={letters} className="text text-big" />
-            {/* if !foundWord and !gameover insert letters, else insert gameover*/}
+
             {!foundWord && !gameover && (
               <Letters
                 pressLetter={pressLetter}
@@ -76,13 +76,27 @@ function App() {
               />
             )}
             {gameover && (
-              <Container className="col child4">{gameover}</Container>
+              <button
+                onClick={() => reset()}
+                className="container col child4 text-xl"
+              >
+                Reload to play again
+              </button>
             )}
+
+            <button
+              className="button2"
+              onClick={() => {
+                setLangage(langage === "fr" ? "en" : "fr");
+                reset();
+              }}
+            >
+              changer la langue en {langage === "fr" ? "Anglais" : "Français"}
+            </button>
           </Container>
         </Container>
         <Container className="row child2">
           <Pendu tries={tries} foundWord={foundWord} />
-          {/* pendu */}
         </Container>
       </Container>
     </div>
