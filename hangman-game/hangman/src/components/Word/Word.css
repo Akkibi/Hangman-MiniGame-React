@@ -1,0 +1,17 @@
+.text {
+  color: white;
+  flex: 1 0 0%;
+  height: 100%;
+  width: 100%;
+  font-size: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-big {
+  font-size: 1.25rem;
+}
+
+.align-center {
+  text-align: center;
+}

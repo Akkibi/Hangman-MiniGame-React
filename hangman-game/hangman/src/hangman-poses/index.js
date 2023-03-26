@@ -1,0 +1,13 @@
+export const Hangman0 = require("./0.svg");
+export const Hangman1 = require("./1.svg");
+export const Hangman2 = require("./2.svg");
+export const Hangman3 = require("./3.svg");
+export const Hangman4 = require("./4.svg");
+export const Hangman5 = require("./5.svg");
+export const Hangman6 = require("./6.svg");
+export const Hangman7 = require("./7.svg");
+export const Hangman8 = require("./8.svg");
+export const Hangman9 = require("./9.svg");
+export const Hangman10 = require("./10.svg");
+export const Hangman11 = require("./11.svg");
+export const Hangman12 = require("./12.svg");

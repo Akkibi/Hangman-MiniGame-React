@@ -1,0 +1,42 @@
+.container {
+  background-color: rgba(0, 0, 255, 0.1);
+  border: 2px solid blue;
+  display: flex;
+  flex: 1 0 0%;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.row {
+  flex-direction: row;
+}
+.col {
+  flex-direction: column;
+}
+.child1 {
+  padding: 2vw;
+  gap: 2vw;
+  border-radius: 4vw;
+}
+.child2 {
+  padding: 1vw;
+  gap: 1vw;
+  border-radius: 2vw;
+}
+.child3 {
+  padding: 0.5vw;
+  gap: 0.5vw;
+  border-radius: 1vw;
+}
+.child4 {
+  padding: 0.25vw;
+  gap: 0.25vw;
+  border-radius: 0.5vw;
+}
+@media (max-aspect-ratio: 1/1) {
+  .row {
+    flex-direction: column;
+  }
+}

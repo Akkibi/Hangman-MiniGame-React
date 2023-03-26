@@ -1,0 +1,12 @@
+.pendu {
+  color: white;
+  display: inline-flex;
+  margin: 1vw;
+  font-size: 4vw;
+  display: inline-flex;
+}
+.image-background {
+  background-size: contain;
+  height: 100%;
+  width: 100%;
+}
