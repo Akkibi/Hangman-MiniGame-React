@@ -6,8 +6,6 @@ import { Pendu } from "./components/Pendu/Pendu";
 import "./App.css";
 import hangmanSvg from "./HANGMAN.svg";
 
-// get the response to an api call from http://localhost:3001 and set "word" to the response. Exemple of response: {"word":"deathliest"}
-
 // const response = await fetch("http://localhost:3001", {
 //   method: "GET",
 //   mode: "cors",
